@@ -805,17 +805,16 @@ class _SongsTabState extends State<SongsTab>
                           fileName: widget.songs[index].displayNameWOExt,
                         ),
                         title: Semantics(
-                          label: 'Title',
                           explicitChildNodes: true,
                           child: Text(
                             widget.songs[index].title.trim() != ''
                                 ? widget.songs[index].title
                                 : widget.songs[index].displayNameWOExt,
                             overflow: TextOverflow.ellipsis,
+                            semanticsLabel: "${widget.songs[index].title}",
                           ),
                         ),
                         subtitle: Semantics(
-                          label: 'Subtitle',
                           explicitChildNodes: true,
                           child: Text(
                             '${widget.songs[index].artist?.replaceAll('<unknown>', 'Unknown') ?? AppLocalizations.of(context)!.unknown} - ${widget.songs[index].album?.replaceAll('<unknown>', 'Unknown') ?? AppLocalizations.of(context)!.unknown}',
