@@ -146,15 +146,22 @@ class _MiniPlayerState extends State<MiniPlayer> {
           : () {
               Navigator.pushNamed(context, '/player');
             },
-      title: Text(
-        isDummy ? 'Now Playing' : title,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+      title: Semantics(
+        explicitChildNodes: true,
+        label: 'player', // Static semantic label for title
+        child: Text(
+          isDummy ? 'Now Playing' : title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
-      subtitle: Text(
-        isDummy ? 'Unknown' : subtitle,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
+      subtitle: Semantics(
+        explicitChildNodes: true,
+        child: Text(
+          isDummy ? 'Unknown' : subtitle,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
       ),
       leading: Hero(
         tag: 'currentArtwork',

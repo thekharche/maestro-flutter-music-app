@@ -128,11 +128,17 @@ class _YouTubeArtistState extends State<YouTubeArtist> {
                               leading: imageCard(
                                 imageUrl: entry['image'].toString(),
                               ),
-                              title: Text(
-                                entry['title'].toString(),
-                                overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w500,
+                              title: Semantics(
+                                // ADDED
+                                explicitChildNodes: true, // ADDED
+                                child: Text(
+                                  entry['title'].toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  semanticsLabel:
+                                      entry['title'].toString(), // ADDED
                                 ),
                               ),
                               onLongPress: () {
@@ -143,9 +149,15 @@ class _YouTubeArtistState extends State<YouTubeArtist> {
                               },
                               subtitle: entry['subtitle'] == ''
                                   ? null
-                                  : Text(
-                                      entry['subtitle'].toString(),
-                                      overflow: TextOverflow.ellipsis,
+                                  : Semantics(
+                                      // ADDED
+                                      explicitChildNodes: true, // ADDED
+                                      child: Text(
+                                        entry['subtitle'].toString(),
+                                        overflow: TextOverflow.ellipsis,
+                                        semanticsLabel: entry['subtitle']
+                                            .toString(), // ADDED
+                                      ),
                                     ),
                               onTap: () async {
                                 setState(() {

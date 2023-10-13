@@ -1,0 +1,10 @@
+appId: ${APP_ID}
+---
+# For Android only
+- runFlow:
+    when:
+      visible:
+        id: "com.android.permissioncontroller:id/permission_allow_button"
+    commands:
+      - tapOn:
+          id: "com.android.permissioncontroller:id/permission_allow_button"

@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+---
+# Search for song
+- waitForAnimationToEnd
+- tapOn: "Songs, albums or artists"
+- inputText: "Sia Chand"
+- tapOn: "sia chandelier"
+
+# Back (to hide keyboard)
+- runFlow: ../common/back.yaml
+
+# Tap on search in keyboard for iOS (to hide keyboard)
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+      - tapOn: "search"

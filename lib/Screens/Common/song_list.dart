@@ -284,52 +284,63 @@ class _SongsListPageState extends State<SongsListPage> {
                           ),
                         ),
                       ),
-                    ...songList.map((entry) {
+                    ...songList.asMap().entries.map((entry) {
+                      var index = entry.key;
+                      var song = entry.value;
+
                       return ListTile(
                         contentPadding: const EdgeInsets.only(left: 15.0),
-                        title: Text(
-                          '${entry["title"]}',
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.w500,
+                        title: Semantics(
+                          explicitChildNodes: true,
+                          child: Text(
+                            '${song["title"]}',
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w500,
+                            ),
+                            semanticsLabel: '${index}-item-title',
                           ),
                         ),
                         onLongPress: () {
                           copyToClipboard(
                             context: context,
-                            text: '${entry["title"]}',
+                            text: '${song["title"]}',
                           );
                         },
-                        subtitle: Text(
-                          '${entry["subtitle"]}',
-                          overflow: TextOverflow.ellipsis,
+                        subtitle: Semantics(
+                          explicitChildNodes: true,
+                          child: Text(
+                            '${song["subtitle"]}',
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          label: '${index}-item-subtitle',
                         ),
-                        leading: imageCard(imageUrl: entry['image'].toString()),
+                        leading: imageCard(imageUrl: song['image'].toString()),
                         trailing: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             DownloadButton(
-                              data: entry as Map,
+                              data: song as Map,
                               icon: 'download',
                             ),
                             LikeButton(
                               mediaItem: null,
-                              data: entry,
+                              data: song,
                             ),
-                            SongTileTrailingMenu(data: entry),
+                            SongTileTrailingMenu(data: song),
                           ],
                         ),
                         onTap: () {
                           PlayerInvoke.init(
                             songsList: songList,
                             index: songList.indexWhere(
-                              (element) => element == entry,
+                              (element) => element == song,
                             ),
                             isOffline: false,
                           );
                         },
                       );
-                    }),
+                    }).toList(),
                   ]),
                 ),
               ),

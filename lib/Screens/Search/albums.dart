@@ -158,11 +158,17 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
                             return Padding(
                               padding: const EdgeInsets.only(right: 7),
                               child: ListTile(
-                                title: Text(
-                                  '${entry["title"]}',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w500,
+                                title: Semantics(
+                                  // ADDED
+                                  explicitChildNodes: true, // ADDED
+                                  child: Text(
+                                    '${entry["title"]}',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                    semanticsLabel:
+                                        "${entry["title"]}", // ADDED
                                   ),
                                 ),
                                 onLongPress: () {
@@ -173,9 +179,15 @@ class _AlbumSearchPageState extends State<AlbumSearchPage> {
                                 },
                                 subtitle: entry['subtitle'] == ''
                                     ? null
-                                    : Text(
-                                        '${entry["subtitle"]}',
-                                        overflow: TextOverflow.ellipsis,
+                                    : Semantics(
+                                        // ADDED
+                                        explicitChildNodes: true, // ADDED
+                                        child: Text(
+                                          '${entry["subtitle"]}',
+                                          overflow: TextOverflow.ellipsis,
+                                          semanticsLabel:
+                                              "${entry["subtitle"]}", // ADDED
+                                        ),
                                       ),
                                 leading: imageCard(
                                   elevation: 8,

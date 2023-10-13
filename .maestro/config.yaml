@@ -1,0 +1,9 @@
+# config.yaml
+flows:
+  - journey/*
+
+executionOrder:
+  continueOnFailure: false # default is true
+  flowsOrder:
+    - play-music
+    - view-stats

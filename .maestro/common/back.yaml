@@ -1,0 +1,7 @@
+appId: ${APP_ID}
+---
+- runFlow:
+    when:
+      platform: Android
+    commands:
+      - back

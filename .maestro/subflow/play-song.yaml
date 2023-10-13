@@ -1,0 +1,17 @@
+appId: ${APP_ID}
+---
+#  Play a song
+- tapOn: "YtMusic"
+- assertVisible: "Chandelier.*"
+- tapOn: "Chandelier.*"
+
+# Allow permission
+- runFlow:
+    when:
+      platform: Android
+    file: ../common/allow-permission.yaml
+
+# To bring up the audio player view
+- tapOn: "player"
+
+- takeScreenshot: "play-song"

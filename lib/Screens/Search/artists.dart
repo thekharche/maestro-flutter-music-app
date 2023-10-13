@@ -556,11 +556,17 @@ class _ArtistSearchPageState extends State<ArtistSearchPage> {
                                           contentPadding: const EdgeInsets.only(
                                             left: 15.0,
                                           ),
-                                          title: Text(
-                                            '${entry.value[index]["title"]}',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w500,
+                                          title: Semantics(
+                                            // ADDED
+                                            explicitChildNodes: true, // ADDED
+                                            child: Text(
+                                              '${entry.value[index]["title"]}',
+                                              overflow: TextOverflow.ellipsis,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                              semanticsLabel:
+                                                  "${entry.value[index]["title"]}", // ADDED
                                             ),
                                           ),
                                           onLongPress: () {
@@ -570,9 +576,15 @@ class _ArtistSearchPageState extends State<ArtistSearchPage> {
                                                   '${entry.value[index]["title"]}',
                                             );
                                           },
-                                          subtitle: Text(
-                                            '${entry.value[index]["subtitle"]}',
-                                            overflow: TextOverflow.ellipsis,
+                                          subtitle: Semantics(
+                                            // ADDED
+                                            explicitChildNodes: true, // ADDED
+                                            child: Text(
+                                              '${entry.value[index]["subtitle"]}',
+                                              overflow: TextOverflow.ellipsis,
+                                              semanticsLabel:
+                                                  "${entry.value[index]["subtitle"]}", // ADDED
+                                            ),
                                           ),
                                           leading: imageCard(
                                             placeholderImage: AssetImage(

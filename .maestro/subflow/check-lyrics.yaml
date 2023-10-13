@@ -1,0 +1,7 @@
+appId: ${APP_ID}
+---
+- assertVisible: ".*icon-lyrics.*"
+- tapOn: ".*icon-lyrics.*"
+
+# Check if correct lyrics are displayed
+- assertVisible: ".*Party girls.*"

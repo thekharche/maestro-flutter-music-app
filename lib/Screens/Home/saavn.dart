@@ -860,34 +860,46 @@ class _SaavnHomePageState extends State<SaavnHomePage>
                                               ),
                                               child: Column(
                                                 children: [
-                                                  Text(
-                                                    item['title']
-                                                            ?.toString()
-                                                            .unescape() ??
-                                                        '',
-                                                    textAlign: TextAlign.center,
-                                                    softWrap: false,
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  ),
-                                                  if (subTitle != '')
-                                                    Text(
-                                                      subTitle,
+                                                  Semantics(
+                                                    explicitChildNodes: true,
+                                                    child: Text(
+                                                      item['title']
+                                                              ?.toString()
+                                                              .unescape() ??
+                                                          '',
                                                       textAlign:
                                                           TextAlign.center,
                                                       softWrap: false,
                                                       overflow:
                                                           TextOverflow.ellipsis,
-                                                      style: TextStyle(
-                                                        fontSize: 11,
-                                                        color: Theme.of(context)
-                                                            .textTheme
-                                                            .bodySmall!
-                                                            .color,
+                                                      semanticsLabel:
+                                                          '$index-item-title',
+                                                      style: const TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  if (subTitle != '')
+                                                    Semantics(
+                                                      explicitChildNodes: true,
+                                                      child: Text(
+                                                        subTitle,
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        softWrap: false,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        semanticsLabel:
+                                                            '$index-item-subtitle',
+                                                        style: TextStyle(
+                                                          fontSize: 11,
+                                                          color:
+                                                              Theme.of(context)
+                                                                  .textTheme
+                                                                  .bodySmall!
+                                                                  .color,
+                                                        ),
                                                       ),
                                                     ),
                                                 ],

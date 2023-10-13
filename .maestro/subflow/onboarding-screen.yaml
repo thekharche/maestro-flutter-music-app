@@ -1,0 +1,25 @@
+appId: ${APP_ID}
+---
+# Onboarding flow
+- tapOn: "Enter Your Name"
+- inputText: "Shadow"
+- tapOn: "Get Started"
+
+# Change language
+- assertVisible: "Hindi"
+- tapOn: "Hindi"
+- tapOn: "English"
+- tapOn: "Hindi"
+- tapOn: "Ok"
+
+# Change country
+- assertVisible: "India"
+- tapOn: "India"
+- scrollUntilVisible:
+    element: "USA"
+    direction: DOWN
+- tapOn: "USA"
+- assertVisible: "USA"
+- tapOn: "Finish"
+
+- takeScreenshot: "onboarding-screen"

@@ -187,8 +187,14 @@ class _PrefScreenState extends State<PrefScreen> {
                                     contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 5.0,
                                     ),
-                                    title: Text(
-                                      AppLocalizations.of(context)!.langQue,
+                                    title: Semantics(
+                                      // ADDED
+                                      explicitChildNodes: true, // ADDED
+                                      child: Text(
+                                        AppLocalizations.of(context)!.langQue,
+                                        semanticsLabel:
+                                            "${AppLocalizations.of(context)!.langQue}", // ADDED
+                                      ),
                                     ),
                                     trailing: Container(
                                       padding: const EdgeInsets.only(
@@ -387,8 +393,15 @@ class _PrefScreenState extends State<PrefScreen> {
                                     contentPadding: const EdgeInsets.symmetric(
                                       horizontal: 5.0,
                                     ),
-                                    title: Text(
-                                      AppLocalizations.of(context)!.countryQue,
+                                    title: Semantics(
+                                      // ADDED
+                                      explicitChildNodes: true, // ADDED
+                                      child: Text(
+                                        AppLocalizations.of(context)!
+                                            .countryQue,
+                                        semanticsLabel:
+                                            "${AppLocalizations.of(context)!.countryQue}", // ADDED
+                                      ),
                                     ),
                                     trailing: Container(
                                       padding: const EdgeInsets.only(

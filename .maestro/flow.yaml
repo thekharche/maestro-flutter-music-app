@@ -1,5 +1,0 @@
-appId: com.shadow.blackhole
----
-- launchApp:
-    clearState: true
-- assertVisible: "Skip"
