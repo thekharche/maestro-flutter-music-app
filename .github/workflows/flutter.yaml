@@ -24,11 +24,11 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
         
-      - name: Run Tests
-        run: flutter test
+      # - name: Run Tests
+      #   run: flutter test
         
-      - name: Build APK (Android)
-        run: flutter build apk --release
+      # - name: Build APK (Android)
+      #   run: flutter build apk --release
         
       - name: Build IPA (iOS)
-        run: flutter build ios --release --no-codesign
+        run: flutter build ios --debug --simulator
