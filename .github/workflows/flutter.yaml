@@ -1,53 +1,33 @@
-name: Flutter CI
+name: BlackHole CI/CD
 
 on:
   push:
     branches:
-      - main
+      - main  # or the branch you use for releases
+    tags:
+      - '*'
 
 jobs:
-  build:
-    name: Build
+  build_and_test:
+    name: Build and Test
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout Repo
+      - name: Checkout Repository
         uses: actions/checkout@v2
-
+        
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.1.0'
-          channel: 'stable'  # replace 'dev' with the channel where 3.1.0 is found
-
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pub-
-
-      - name: Install dependencies
+          flutter-version: '3.0.0'  # Adjust this to your project's Flutter version
+        
+      - name: Install Dependencies
         run: flutter pub get
-
+        
       - name: Run Tests
         run: flutter test
-
-      - name: Build APK
+        
+      - name: Build APK (Android)
         run: flutter build apk --release
-
-      - name: Build iOS
+        
+      - name: Build IPA (iOS)
         run: flutter build ios --release --no-codesign
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release.apk
-          path: build/app/outputs/flutter-apk/app-release.apk
-
-      - name: Upload IPA
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release.ipa
-          path: build/ios/ipa/app-release.ipa
