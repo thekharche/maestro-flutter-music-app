@@ -17,13 +17,37 @@ jobs:
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.1.0'  # Hypothetical version - replace with the actual version
+          flutter-version: '3.1.0'
+          channel: 'dev'  # replace 'dev' with the channel where 3.1.0 is found
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
 
       - name: Install dependencies
         run: flutter pub get
+
+      - name: Run Tests
+        run: flutter test
 
       - name: Build APK
         run: flutter build apk --release
 
       - name: Build iOS
         run: flutter build ios --release --no-codesign
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release.ipa
+          path: build/ios/ipa/app-release.ipa
