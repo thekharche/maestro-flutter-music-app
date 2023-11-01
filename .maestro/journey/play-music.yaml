@@ -12,5 +12,5 @@ appId: ${APP_ID}
 # Play a song
 - runFlow: ../subflow/play-song.yaml
 
-# Check Lyrics
-- runFlow: ../subflow/check-lyrics.yaml
+# # Check Lyrics
+# - runFlow: ../subflow/check-lyrics.yaml
