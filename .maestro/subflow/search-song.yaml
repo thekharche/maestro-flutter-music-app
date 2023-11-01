@@ -9,6 +9,8 @@ appId: ${APP_ID}
 # Back (to hide keyboard)
 - runFlow: ../common/back.yaml
 
+- tapOn: ".*Use Proxy.*"
+
 # Tap on search in keyboard for iOS (to hide keyboard)
 - runFlow:
     when:
